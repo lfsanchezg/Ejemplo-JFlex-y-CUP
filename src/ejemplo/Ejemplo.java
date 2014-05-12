@@ -7,10 +7,13 @@
 package ejemplo;
 
 import aLexico.Yylex;
+import aSintactico.parser;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,11 +27,13 @@ public class Ejemplo {
     public static void main(String[] args) {
         try {
                 Yylex lexer = new Yylex(new FileReader("entradaBuena.txt"));
-                lexer.yylex();
-                lexer.yyclose();
+                parser p = new parser(lexer);
+                p.parse();
                 
         } catch (IOException ex) {
             System.out.println("Error: No se puede acceder al archivo" );
+        } catch (Exception ex) {
+            Logger.getLogger(Ejemplo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

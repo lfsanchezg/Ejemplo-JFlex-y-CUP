@@ -1,17 +1,37 @@
 // CUP specification for a simple expression evaluator (no actions)
 package aSintactico;
 import java_cup.runtime.*;
+import DatosExtra.DatosExtra;
+
 
 /* Preliminaries to set up and use the scanner.  */
 
 
 /* Terminals (tokens returned by the scanner). */
 
+terminal NUMERO, SUMA, RESTA, MULT, DIVISION, NUEVALINEA;
 
 /* Non terminals */
 
+non terminal operaciones, operacion;
 
 /* Precedences */
 
 
 /* The grammar */
+start with operaciones;
+
+operaciones ::= operaciones operacion | operacion;
+
+operacion ::=   NUMERO : n1 SUMA NUMERO : n2 
+                {:
+                    DatosExtra d1 = (DatosExtra) n1;
+                    DatosExtra d2 = (DatosExtra) n2;
+                    int i1 = Integer.parseInt(d1.lexema);
+                    int i2 = Integer.parseInt(d2.lexema);
+                    System.out.println("detecte una suma de " + i1 + " y " + i2);
+                    RESULT = i1 + i2;
+                :}|
+                NUMERO RESTA NUMERO |
+                NUMERO MULT NUMERO |
+                NUMERO DIVISION NUMERO;

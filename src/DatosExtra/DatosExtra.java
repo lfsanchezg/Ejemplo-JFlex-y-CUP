@@ -9,10 +9,10 @@ package DatosExtra;
  * @author felipe
  */
 public class DatosExtra {
-    int columna;
-    int fila;
-    String lexema;
-    DatosExtra(String l, int f, int c){
+    public int columna;
+    public int fila;
+    public String lexema;
+    public DatosExtra(String l, int f, int c){
         lexema = l;
         fila = f;
         columna = c;
