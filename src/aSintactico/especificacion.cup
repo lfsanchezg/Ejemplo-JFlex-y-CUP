@@ -1,0 +1,17 @@
+// CUP specification for a simple expression evaluator (no actions)
+package aSintactico;
+import java_cup.runtime.*;
+
+/* Preliminaries to set up and use the scanner.  */
+
+
+/* Terminals (tokens returned by the scanner). */
+
+
+/* Non terminals */
+
+
+/* Precedences */
+
+
+/* The grammar */
