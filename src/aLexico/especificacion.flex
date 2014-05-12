@@ -32,13 +32,17 @@ nuevaLinea      = "\n" | "\r"
 // declaración de acciones léxicas
 
 {numero}    {
-                consola("encontré el número " + yytext() + " en la posición " + (yyline + 1) + "," + (yycolumn + 1));
+                consola("encontré el número <" + yytext() + "> en la posición " + (yyline + 1) + "," + (yycolumn + 1));
             }
 
 {operador}  {
-                consola("encontré el operador " + yytext() + " en la posición " + (yyline + 1) + "," + (yycolumn + 1));
+                consola("encontré el operador <" + yytext() + "> en la posición " + (yyline + 1) + "," + (yycolumn + 1));
             }
-{nuevaLinea}{
+//acciones vacías aceptan la entrada sin realizar acciones, si no se incluyen, el analizador reportará un error
+{nuevaLinea} {
+                //no haga nada
+            }
+" "         {
                 //no haga nada
             }
 .           {
